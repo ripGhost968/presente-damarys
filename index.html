@@ -400,6 +400,135 @@ footer p { font-size: 13px; }
   }
 }
 
+/* 💌 Envelope romântico */
+.envelope-section {
+  text-align: center;
+  padding: 65px 20px;
+  max-width: 650px;
+  margin: auto;
+}
+
+.envelope-button {
+  display: block;
+  position: relative;
+  width: 240px;
+  height: 165px;
+  margin: 35px auto 25px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 800px;
+  animation: envelopeFloat 3s ease-in-out infinite;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 15px 0 0;
+  background: #f4b8cf;
+  border: 2px solid #e7a0bc;
+  border-radius: 9px;
+  box-shadow: 0 12px 25px #b75b7b25;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 48px 0 0;
+  background: linear-gradient(145deg, #ffd8e6, #f5afca);
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 0 0 9px 9px;
+  z-index: 3;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 15px 0 auto;
+  height: 100px;
+  background: #f9c6d9;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform .8s ease;
+  z-index: 4;
+}
+
+.envelope-seal {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 76px;
+  transform: translateX(-50%);
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  background: #d96696;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px #9d426333;
+  font-size: 23px;
+  transition: opacity .3s;
+}
+
+.envelope-letter {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: 125px;
+  padding: 14px 8px;
+  background: #fffafc;
+  border: 1px solid #f0d4df;
+  border-radius: 5px;
+  z-index: 2;
+  transition: transform .9s ease, height .9s ease;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.envelope-button.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope-button.open .envelope-seal {
+  opacity: 0;
+}
+
+.envelope-button.open .envelope-letter {
+  height: 155px;
+  transform: translateY(-95px);
+}
+
+.envelope-hint {
+  font-size: 13px;
+  color: #ad6985;
+  animation: bob 2s infinite;
+}
+
+.letter-full {
+  text-align: left;
+  line-height: 1.9;
+  margin-top: 25px;
+}
+
+.letter-full h3 {
+  text-align: center;
+  color: #a64d77;
+  font-size: 25px;
+  font-weight: normal;
+}
+
+.letter-full .signature {
+  text-align: right;
+  color: #a64d77;
+  font-style: italic;
+}
+
+@keyframes envelopeFloat {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-7px) rotate(-1deg); }
+}
+
 </style>
 </head>
 <body>
