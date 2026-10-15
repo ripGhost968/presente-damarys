@@ -712,6 +712,216 @@ footer p { font-size: 13px; }
 }
 
 
+  
+/* NOSSO UNIVERSO PARTICULAR */
+.universo-amor {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  padding: 55px 14px 45px;
+  border-radius: 22px;
+  text-align: center;
+  color: #eef6ff;
+  background:
+    radial-gradient(ellipse at 20% 30%, #174f8a88 0%, transparent 38%),
+    radial-gradient(ellipse at 80% 60%, #34287999 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, #126a9b66 0%, transparent 45%),
+    linear-gradient(180deg, #030817 0%, #071a39 48%, #080d28 100%);
+  box-shadow: inset 0 0 55px #020614;
+}
+
+.universo-amor::before,
+.universo-amor::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  filter: blur(65px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.universo-amor::before {
+  background: #167bdb;
+  top: 10%;
+  left: -100px;
+}
+
+.universo-amor::after {
+  background: #8052db;
+  right: -100px;
+  bottom: 5%;
+}
+
+.universo-cabecalho {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  margin: 0 auto 25px;
+}
+
+.universo-cabecalho h2 {
+  color: #d8ebff;
+  font-size: clamp(25px, 5vw, 36px);
+  text-shadow: 0 0 20px #61b8ff88;
+  margin-bottom: 15px;
+}
+
+.universo-cabecalho p {
+  color: #c2d9f5;
+  line-height: 1.8;
+}
+
+.universo-campo {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  max-width: 650px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid #90caff30;
+  background:
+    radial-gradient(ellipse at 50% 50%, #245ba533, transparent 55%),
+    radial-gradient(circle at 20% 20%, #fff8 0 1px, transparent 2px),
+    radial-gradient(circle at 80% 30%, #a7dfff99 0 1px, transparent 2px),
+    radial-gradient(circle at 40% 75%, #fff8 0 1px, transparent 2px),
+    #030a1c;
+  background-size: auto, 83px 97px, 127px 113px, 109px 137px, auto;
+}
+
+.universo-campo::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 35% 40%, #248be52a, transparent 35%),
+    radial-gradient(ellipse at 65% 60%, #9a5bdb22, transparent 32%);
+  transform: rotate(-20deg);
+}
+
+.estrela-amor {
+  position: absolute;
+  z-index: 1;
+  left: var(--x);
+  top: var(--y);
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: transparent;
+  font-size: 25px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  filter: drop-shadow(0 0 5px #7bc9ff);
+  animation: brilhoEstrela 2.8s ease-in-out infinite;
+  animation-delay: var(--atraso, 0s);
+  transition: scale 0.2s ease;
+}
+
+.estrela-amor::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  z-index: -1;
+  border-radius: 50%;
+  background: #79c8ff55;
+  filter: blur(9px);
+}
+
+.estrela-amor:hover {
+  scale: 1.25;
+}
+
+.estrela-amor:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+.estrela-amor.descoberta {
+  color: #ffdf9e;
+  filter: drop-shadow(0 0 10px #ffd777);
+}
+
+@keyframes brilhoEstrela {
+  0%, 100% {
+    opacity: 0.7;
+    scale: 0.92;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.08;
+  }
+}
+
+.mensagem-universo {
+  position: relative;
+  z-index: 2;
+  max-width: 510px;
+  margin: 22px auto 0;
+  padding: 22px 18px;
+  border: 1px solid #91cfff55;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #102d50ee, #191b45ee);
+  color: #f2f7ff;
+  box-shadow: 0 0 30px #318bda22;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.mensagem-universo h3 {
+  color: #bde4ff;
+  margin: 0 0 12px;
+}
+
+.mensagem-universo p {
+  margin: 0;
+}
+
+.mensagem-universo.hidden {
+  display: none;
+}
+
+.progresso-universo {
+  position: relative;
+  z-index: 2;
+  margin-top: 20px;
+  color: #b9d8f5;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .universo-amor {
+    padding: 35px 10px;
+    border-radius: 16px;
+  }
+
+  .universo-campo {
+    height: 380px;
+  }
+
+  .estrela-amor {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .estrela-amor {
+    animation: none;
+    transition: none;
+  }
+}
+
 </style>
 </head>
 <body>
