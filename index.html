@@ -1345,6 +1345,39 @@ function mensagemUrsinho() {
 }
 
 
+  
+function abrirPresenteFinal() {
+  const botao = document.getElementById("botaoPresenteFinal");
+  const emoji = document.getElementById("emojiPresenteFinal");
+  const textoBotao = document.getElementById("textoPresenteFinal");
+  const carta = document.getElementById("cartaFinalDamarys");
+
+  const aberto = carta.classList.contains("hidden");
+
+  if (aberto) {
+    carta.classList.remove("hidden");
+    carta.classList.remove("visivel");
+
+    // Reinicia apenas a animação de entrada da carta
+    void carta.offsetWidth;
+
+    carta.classList.add("visivel");
+    emoji.textContent = "💝";
+    textoBotao.textContent = "Fechar a cartinha 💌";
+    botao.setAttribute("aria-expanded", "true");
+
+    if (typeof chuvaDeAmor === "function") {
+      chuvaDeAmor(18);
+    }
+  } else {
+    carta.classList.add("hidden");
+    carta.classList.remove("visivel");
+    emoji.textContent = "🎁";
+    textoBotao.textContent = "Abrir seu presente 💝";
+    botao.setAttribute("aria-expanded", "false");
+  }
+}
+
 </script>
 </body>
 </html>
