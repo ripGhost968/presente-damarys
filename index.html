@@ -3,136 +3,429 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para minha Damarys 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff0f6">
+<title>Um universo chamado Damarys 💗</title>
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;background:#fff7fa;color:#75485b;
- font-family:Georgia,serif;text-align:center;
+:root {
+  --pink: #d96696;
+  --dark: #793e59;
+  --soft: #fff0f6;
+  --rose: #f7d0df;
 }
-.hero{
- min-height:100vh;padding:35px 22px;display:flex;
- flex-direction:column;align-items:center;justify-content:center;
- background:radial-gradient(ellipse at top,#fff 0%,#ffeaf2 55%,#fbd8e6 100%);
- position:relative;overflow:hidden;
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--dark);
+  font-family: Georgia, "Times New Roman", serif;
+  background: #fff8fb;
+  overflow-x: hidden;
 }
-.eyebrow{letter-spacing:3px;text-transform:uppercase;font-size:11px;color:#b16c88}
-h1{font-size:clamp(34px,9vw,52px);font-weight:normal;margin:18px 0;color:#a64e76}
-h2{font-size:29px;font-weight:normal;color:#a64e76}
-p{font-size:17px;line-height:1.85}
-.heart{font-size:67px;animation:beat 1.5s infinite}
-button{
- border:0;border-radius:30px;background:#c96891;color:white;
- padding:14px 23px;font-size:15px;cursor:pointer;
- box-shadow:0 5px 16px #c9689133;margin:10px 4px;
+button { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible {
+  outline: 3px solid #b74d7d;
+  outline-offset: 4px;
 }
-button:active{transform:scale(.97)}
-.section{padding:60px 22px;max-width:680px;margin:auto}
-.card{
- background:#fff;border:1px solid #f4d5e1;border-radius:22px;
- padding:25px 22px;box-shadow:0 9px 30px #9d587510;
+#particles {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 5;
 }
-.hidden{display:none}
-.ornament{color:#d58ca8;letter-spacing:8px;font-size:23px}
-.line{width:65px;height:1px;background:#dba1b7;margin:22px auto}
-.reason{
- background:#fff;border:1px solid #f2d4e0;border-radius:16px;
- padding:17px;margin:12px 0;cursor:pointer;
+.glow {
+  position: fixed; width: 250px; height: 250px;
+  border-radius: 50%; filter: blur(80px);
+  opacity: .2; pointer-events: none; z-index: -1;
 }
-.reason p{margin:8px 0 0;font-size:15px}
-footer{padding:30px 18px 45px;color:#a16d82;font-size:14px}
-.float{
- position:absolute;bottom:-30px;animation:rise 7s linear infinite;
- opacity:.65;pointer-events:none;
+.glow.one { background: #f28eb8; top: 5%; left: -120px; }
+.glow.two { background: #d8a6fa; bottom: 10%; right: -130px; }
+.hero {
+  min-height: 100svh; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding: 55px 22px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 20%, #fff 0%, transparent 45%),
+    linear-gradient(145deg,#fff8fb,#ffe5ef 52%,#f9e8ff);
 }
-@keyframes beat{50%{transform:scale(1.13)}}
-@keyframes rise{
- from{transform:translateY(0) rotate(0);opacity:0}
- 15%{opacity:.7}to{transform:translateY(-110vh) rotate(25deg);opacity:0}
+.hero-inner { max-width: 540px; animation: appear 1.4s ease both; }
+.kicker {
+  text-transform: uppercase; letter-spacing: 4px;
+  font: 11px Arial,sans-serif; color: #ad6985;
 }
-@media(min-width:600px){.card{padding:35px}}
+.hero-heart {
+  font-size: 76px; margin: 25px 0 10px;
+  display: inline-block;
+  filter: drop-shadow(0 8px 18px #dc7fa977);
+  animation: heartbeat 2s ease-in-out infinite;
+}
+h1 {
+  font-size: clamp(42px,11vw,70px); font-weight: normal;
+  line-height: 1.1; margin: 15px 0; color: #a64d77;
+}
+h2 {
+  font-size: clamp(28px,7vw,40px); font-weight: normal;
+  color: #a64d77; line-height: 1.2;
+}
+p { font-size: 16px; line-height: 1.9; }
+.subtitle { max-width: 390px; margin: 20px auto; }
+.btn {
+  display: inline-block; padding: 15px 24px; margin: 9px 5px;
+  border: 1px solid #d77a9e; border-radius: 999px;
+  color: white; background: linear-gradient(135deg,#df82a7,#c75c8b);
+  box-shadow: 0 8px 24px #c75c8b30; cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px #c75c8b50; }
+.btn.secondary { background: #ffffffb8; color: #a64d77; }
+.small { font: 12px Arial,sans-serif; color: #ad7a91; }
+.decor { color: #d58bab; letter-spacing: 8px; font-size: 22px; }
+.scroll-note {
+  position: absolute; bottom: 20px; left: 0; right: 0;
+  font: 11px Arial,sans-serif; letter-spacing: 2px; opacity: .7;
+  animation: bob 2s infinite;
+}
+.section {
+  padding: 75px 20px; max-width: 760px; margin: auto;
+  text-align: center;
+}
+.section-title { margin-bottom: 12px; }
+.card {
+  padding: 27px 22px; margin: 22px 0;
+  background: linear-gradient(145deg,#fff,#fff7fa);
+  border: 1px solid #f4d4e1; border-radius: 25px;
+  box-shadow: 0 15px 45px #a7507010;
+}
+.letter {
+  text-align: left; line-height: 2;
+  position: relative; overflow: hidden;
+}
+.letter:before {
+  content: "♡"; position: absolute; right: 10px; top: 0;
+  font-size: 70px; color: #f8dce7; opacity: .5;
+}
+.hidden { display: none !important; }
+.reveal { animation: appear .65s ease both; }
+.divider {
+  width: 65px; height: 1px; margin: 25px auto;
+  background: linear-gradient(90deg,transparent,#d58bab,transparent);
+}
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.memory {
+  background: white; padding: 10px 10px 17px;
+  border-radius: 5px; box-shadow: 0 8px 24px #83465c18;
+  transform: rotate(-2deg); transition: transform .3s;
+}
+.memory:nth-child(even) { transform: rotate(2deg); }
+.memory:active { transform: scale(.97); }
+.photo-placeholder {
+  aspect-ratio: 4/5; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; gap: 8px;
+  background: linear-gradient(145deg,#fff0f6,#f7e9ff);
+  color: #b17b94; padding: 8px; overflow: hidden;
+}
+.photo-placeholder span { font-size: 37px; }
+.photo-placeholder small { font: 11px Arial,sans-serif; line-height: 1.5; }
+.memory p { font-size: 13px; margin: 12px 2px 0; line-height: 1.5; }
+.reasons { display: grid; gap: 12px; }
+.reason {
+  width: 100%; text-align: left; padding: 19px;
+  border: 1px solid #f1d2df; border-radius: 18px;
+  background: #fff; color: var(--dark); cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.reason:hover { background: #fff1f6; transform: translateY(-2px); }
+.reason strong { font-size: 16px; }
+.reason .answer { margin: 13px 0 0; font-size: 15px; }
+.timeline { text-align: left; border-left: 2px solid #efbed1; margin: 28px 0 10px 12px; }
+.moment { padding: 0 0 22px 22px; position: relative; }
+.moment:before {
+  content: "♡"; position: absolute; left: -13px; top: -3px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #fff0f6; text-align: center; color: #c45f8a;
+}
+.moment h3 { font-weight: normal; margin: 0; color: #ad527b; }
+.moment p { margin: 7px 0 0; font-size: 15px; }
+.gift {
+  font-size: 83px; display: inline-block; cursor: pointer;
+  filter: drop-shadow(0 8px 15px #d17b9c44);
+  animation: bob 2s ease-in-out infinite;
+}
+.final-message {
+  padding: 22px; border-radius: 20px;
+  background: linear-gradient(135deg,#fff0f6,#fff,#f7edff);
+}
+.music-bar {
+  position: fixed; z-index: 10; bottom: 14px; right: 14px;
+  border: 1px solid #edc2d4; border-radius: 50px;
+  padding: 12px 16px; color: #a64d77;
+  background: #ffffffed; box-shadow: 0 5px 20px #74374b20;
+  cursor: pointer; font-size: 13px;
+}
+footer { text-align: center; padding: 40px 18px 80px; color: #a8798e; }
+footer p { font-size: 13px; }
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+@keyframes bob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: .85; }
+  100% { transform: translateY(-105vh) rotate(35deg); opacity: 0; }
+}
+@media(min-width:600px) {
+  .section { padding-top: 95px; padding-bottom: 95px; }
+  .card { padding: 38px; }
+  .grid { gap: 20px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
 </style>
 </head>
 <body>
+<canvas id="particles" aria-hidden="true"></canvas>
+<div class="glow one"></div><div class="glow two"></div>
 
-<section class="hero" id="inicio">
- <div class="eyebrow">Um presente feito de coração</div>
- <div class="heart">💗</div>
- <h1>Para você,<br>Damarys</h1>
- <div class="line"></div>
- <p>Uma pequena surpresa para uma pessoa<br>que se tornou tão especial para mim.</p>
- <button onclick="abrir()">Abrir meu presente 💌</button>
- <div class="ornament">♡ ✿ ♡</div>
-</section>
+<header class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="kicker">feito com carinho, só para você</div>
+    <div class="hero-heart">💗</div>
+    <h1>Damarys,<br>meu amor</h1>
+    <div class="decor">✧ ♡ ✧</div>
+    <p class="subtitle">Preparei um cantinho especial para você. Cada detalhe guarda um pouquinho do carinho que sinto por você.</p>
+    <button class="btn" onclick="abrirPresente()">Descobrir meu presente 💌</button>
+    <p class="small">uma surpresa feita de coração</p>
+  </div>
+  <div class="scroll-note">UM PRESENTE PARA EXPLORAR ↓</div>
+</header>
 
 <main id="conteudo" class="hidden">
- <section class="section">
-  <div class="ornament">✿ ♡ ✿</div>
-  <h2>Feliz aniversário, meu amor!</h2>
-  <p>Hoje o dia é todinho seu, minha princesa. ❤️</p>
-  <div class="card">
-   <p>Minha Damarys,</p>
-   <p>Eu queria preparar algo especial para você, algo que pudesse guardar um pedacinho do carinho que sinto por você. Talvez um site não consiga mostrar tudo o que existe no meu coração, mas cada detalhe aqui foi pensado com muito amor.</p>
-   <p>Sou feliz por ter você na minha vida. Amo seu jeitinho, suas palavras, seu carinho e essas pequenas coisas que fazem você ser tão única para mim.</p>
-   <p>Quero continuar conhecendo cada parte de você, compartilhar risadas, criar lembranças bonitas e estar ao seu lado tanto nos dias felizes quanto nos dias difíceis.</p>
-   <p>Peço a Deus que cuide de você, ilumine seus caminhos e lhe dê saúde, paz e muitos motivos para sorrir. Que esse novo ciclo traga coisas lindas para sua vida.</p>
-   <p>Obrigado por ser você e por fazer parte da minha história. Espero que, quando olhar para este presente, consiga sentir um pouquinho de todo o amor que coloquei nele.</p>
-   <p><strong>Feliz aniversário, minha princesa. Eu te amo! 💗</strong></p>
-  </div>
- </section>
+  <section class="section reveal">
+    <div class="decor">♡ ✿ ♡</div>
+    <h2 class="section-title">Feliz aniversário,<br>minha princesa!</h2>
+    <p>Hoje é o seu dia, mas quem ganhou um presente fui eu: a oportunidade de ter você na minha vida. ❤️</p>
+    <div class="divider"></div>
+    <article class="card letter">
+      <p><strong>Minha Damarys,</strong></p>
+      <p>Eu queria conseguir colocar em palavras tudo o que sinto por você. Às vezes, parece que nenhuma frase consegue explicar direitinho o tamanho do meu carinho, mas eu quis tentar de um jeito diferente: criando algo que fosse só nosso.</p>
+      <p>Amo seu jeitinho, suas demonstrações de carinho e os pequenos detalhes que fazem você ser única. Amo poder conversar com você, dar risada e imaginar todas as lembranças bonitas que ainda podemos construir.</p>
+      <p>Quero continuar aprendendo sobre você, respeitando seu tempo, apoiando seus sonhos e estando ao seu lado nos dias bons e nos dias difíceis. Não quero que nosso amor seja só feito de palavras bonitas, mas também de cuidado, respeito, paciência e atitudes.</p>
+      <p>Peço a Deus que cuide de você, proteja seu coração, ilumine seus caminhos e lhe dê saúde, paz e felicidade. Que Ele abençoe sua vida e nos ajude a construir uma história bonita, sem esquecer o que realmente importa.</p>
+      <p>Espero que você sorria ao abrir este presente e perceba que cada pedacinho foi preparado pensando em você. Talvez não seja o maior presente do mundo, mas é um que fiz questão de criar com minhas próprias mãos e com todo o carinho que tenho.</p>
+      <p><strong>Feliz aniversário, meu amor. Que seu novo ciclo seja tão lindo quanto o bem que você traz para minha vida. Eu te amo, minha princesa! 💗</strong></p>
+    </article>
+    <p class="decor">✧ 🌷 ✧</p>
+  </section>
 
- <section class="section">
-  <div class="ornament">♡</div>
-  <h2>Coisas que amo em você</h2>
-  <p>Toque em cada cartinha para descobrir uma mensagem. 🌷</p>
-  <div class="reason" onclick="revelar(0)">
-   <strong>Seu jeitinho 💗</strong><p id="r0" class="hidden">A maneira única de ser você. São os seus detalhes que fazem você tão especial para mim.</p>
-  </div>
-  <div class="reason" onclick="revelar(1)">
-   <strong>Seu carinho 🥹</strong><p id="r1" class="hidden">Até as pequenas demonstrações de carinho conseguem deixar meu dia muito melhor.</p>
-  </div>
-  <div class="reason" onclick="revelar(2)">
-   <strong>Sua fé ✨</strong><p id="r2" class="hidden">Admiro a importância que Deus tem na sua vida e desejo que Ele continue guiando seus passos.</p>
-  </div>
-  <div class="reason" onclick="revelar(3)">
-   <strong>Você por inteiro 🌷</strong><p id="r3" class="hidden">Não é só uma coisa que amo. É o conjunto de detalhes que faz você ser a minha pessoa especial.</p>
-  </div>
- </section>
+  <section class="section reveal" id="fotos">
+    <div class="decor">♡</div>
+    <h2>Nossas lembranças</h2>
+    <p>Um espaço reservado para guardar momentos que quero lembrar com você.</p>
+    <div class="grid">
+      <div class="memory">
+        <div class="photo-placeholder"><span>📷</span><small>Adicione aqui a foto 1</small></div>
+        <p>Um momento nosso 💗</p>
+      </div>
+      <div class="memory">
+        <div class="photo-placeholder"><span>🌷</span><small>Adicione aqui a foto 2</small></div>
+        <p>Uma lembrança especial</p>
+      </div>
+      <div class="memory">
+        <div class="photo-placeholder"><span>✨</span><small>Adicione aqui a foto 3</small></div>
+        <p>Um detalhe que amo</p>
+      </div>
+      <div class="memory">
+        <div class="photo-placeholder"><span>💌</span><small>Adicione aqui a foto 4</small></div>
+        <p>Mais uma página da nossa história</p>
+      </div>
+    </div>
+    <p class="small">Em breve, estas molduras vão guardar fotos de verdade. ❤️</p>
+  </section>
 
- <section class="section">
-  <div class="card">
-   <div class="heart">🎁</div>
-   <h2>Uma última coisinha...</h2>
-   <p>Se eu pudesse escolher de novo, ainda gostaria de conhecer você e construir nossas lembranças juntinhos.</p>
-   <button onclick="surpresa()">Toque para abrir ❤️</button>
-   <p id="final" class="hidden"><strong>Meu presente favorito é poder viver essa história com você. Que Deus abençoe nós dois e tudo o que ainda vamos construir. Te amo, minha princesa! 💗</strong></p>
-  </div>
- </section>
+  <section class="section reveal">
+    <div class="decor">✿ ♡ ✿</div>
+    <h2>Pequenos motivos<br>para te amar</h2>
+    <p>Toque em cada cartão. Tem uma mensagem esperando por você. 🥹</p>
+    <div class="reasons">
+      <button class="reason" onclick="revelar(this)">
+        <strong>♡ Seu jeitinho</strong>
+        <p class="answer hidden">A forma como você é, com seus detalhes e seu jeito único de ver o mundo, faz você ser tão especial para mim.</p>
+      </button>
+      <button class="reason" onclick="revelar(this)">
+        <strong>♡ Seu carinho</strong>
+        <p class="answer hidden">As pequenas demonstrações de carinho que você me dá conseguem deixar meu dia muito mais feliz.</p>
+      </button>
+      <button class="reason" onclick="revelar(this)">
+        <strong>♡ Sua fé</strong>
+        <p class="answer hidden">Admiro a importância que Deus tem na sua vida. Desejo que sua fé continue sendo uma fonte de força, paz e esperança.</p>
+      </button>
+      <button class="reason" onclick="revelar(this)">
+        <strong>♡ Seu sorriso</strong>
+        <p class="answer hidden">Só de imaginar você sorrindo, já fico feliz. Quero que você tenha muitos motivos para sorrir, hoje e sempre.</p>
+      </button>
+      <button class="reason" onclick="revelar(this)">
+        <strong>♡ Você sendo você</strong>
+        <p class="answer hidden">Não preciso que você seja perfeita. Amo conhecer quem você é de verdade e quero que possa ser você mesma comigo.</p>
+      </button>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="decor">♡</div>
+    <h2>Uma pequena promessa</h2>
+    <div class="card">
+      <div class="timeline">
+        <div class="moment">
+          <h3>Ouvir você</h3>
+          <p>Quero dar espaço para seus sentimentos e tentar compreender o que passa no seu coração.</p>
+        </div>
+        <div class="moment">
+          <h3>Torcer por você</h3>
+          <p>Quero comemorar suas conquistas e apoiar você nos desafios que aparecerem pelo caminho.</p>
+        </div>
+        <div class="moment">
+          <h3>Cuidar do nosso amor</h3>
+          <p>Quero construir nossa história com sinceridade, respeito, carinho e atitudes todos os dias.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="decor">✧ ♡ ✧</div>
+    <h2>Guardei mais uma surpresa...</h2>
+    <p>Tem certeza de que quer abrir? 🥹</p>
+    <button class="gift" onclick="abrirCaixa()" aria-label="Abrir a surpresa">🎁</button>
+    <div id="surpresa" class="final-message hidden">
+      <div class="hero-heart">💖</div>
+      <h2>Você é muito especial!</h2>
+      <p>Se eu pudesse escolher uma coisa para este novo ciclo da sua vida, seria que você pudesse enxergar o quanto é querida e o quanto merece viver coisas boas.</p>
+      <p>Que Deus cuide de você hoje e sempre. Obrigado por fazer parte da minha vida e por me permitir fazer parte da sua.</p>
+      <p><strong>Feliz aniversário, minha princesa. Eu te amo! ❤️</strong></p>
+      <div class="decor">🌷 ♡ 🌷</div>
+    </div>
+  </section>
 </main>
 
-<footer>Feito com amor, especialmente para você. ♡</footer>
+<footer>
+  <div class="decor">♡ ✧ ♡</div>
+  <p>Feito com carinho, especialmente para Damarys.</p>
+  <p>Que Deus abençoe sua vida e nossa história. 💗</p>
+</footer>
+
+<button class="music-bar" id="musicButton" onclick="alternarMusica()">♫ Música: preparar</button>
+<audio id="musica" loop preload="none"></audio>
 
 <script>
-function abrir(){
- document.getElementById('conteudo').classList.remove('hidden');
- document.getElementById('conteudo').scrollIntoView({behavior:'smooth'});
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let particles = [];
+let w = 0, h = 0;
+
+function ajustarCanvas() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  w = window.innerWidth;
+  h = window.innerHeight;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + "px";
+  canvas.style.height = h + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  particles = Array.from({length: Math.min(45, Math.floor(w / 9))}, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    size: Math.random() * 3 + 1,
+    speed: Math.random() * .45 + .12,
+    alpha: Math.random() * .5 + .15
+  }));
 }
-function revelar(n){
- document.getElementById('r'+n).classList.toggle('hidden');
+function animarParticulas() {
+  ctx.clearRect(0, 0, w, h);
+  for (const p of particles) {
+    p.y -= p.speed;
+    if (p.y < -5) { p.y = h + 5; p.x = Math.random() * w; }
+    ctx.beginPath();
+    ctx.fillStyle = "rgba(213,123,164," + p.alpha + ")";
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  requestAnimationFrame(animarParticulas);
 }
-function surpresa(){
- document.getElementById('final').classList.toggle('hidden');
+ajustarCanvas();
+animarParticulas();
+window.addEventListener("resize", ajustarCanvas);
+
+function abrirPresente() {
+  document.getElementById("conteudo").classList.remove("hidden");
+  document.getElementById("conteudo").classList.add("reveal");
+  chuvaDeAmor(32);
+  setTimeout(() => {
+    document.getElementById("conteudo").scrollIntoView({behavior:"smooth"});
+  }, 100);
 }
-for(let i=0;i<12;i++){
- let h=document.createElement('span');
- h.className='float';
- h.textContent=['♡','♥','✿','💕'][i%4];
- h.style.left=(i*8+3)+'%';
- h.style.animationDelay=(i*.65)+'s';
- h.style.fontSize=(15+i%3*6)+'px';
- document.querySelector('.hero').appendChild(h);
+function revelar(botao) {
+  const resposta = botao.querySelector(".answer");
+  resposta.classList.toggle("hidden");
+  if (!resposta.classList.contains("hidden")) {
+    resposta.classList.add("reveal");
+    chuvaDeAmor(5);
+  }
+}
+function abrirCaixa() {
+  const msg = document.getElementById("surpresa");
+  msg.classList.toggle("hidden");
+  if (!msg.classList.contains("hidden")) {
+    msg.classList.add("reveal");
+    chuvaDeAmor(65);
+    document.querySelector(".gift").textContent = "💝";
+    setTimeout(() => msg.scrollIntoView({behavior:"smooth",block:"center"}), 100);
+  }
+}
+function chuvaDeAmor(qtd) {
+  const simbolos = ["♥","♡","💗","✨","🌸"];
+  for (let i = 0; i < qtd; i++) {
+    const el = document.createElement("span");
+    el.textContent = simbolos[Math.floor(Math.random()*simbolos.length)];
+    Object.assign(el.style, {
+      position:"fixed",
+      left:Math.random()*100+"vw",
+      bottom:"-35px",
+      zIndex:20,
+      pointerEvents:"none",
+      fontSize:(16+Math.random()*20)+"px",
+      animation:"floatUp "+(2.5+Math.random()*2)+"s ease-out forwards"
+    });
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 5000);
+  }
+}
+const audio = document.getElementById("musica");
+const musicButton = document.getElementById("musicButton");
+let musicConfigured = false;
+function alternarMusica() {
+  if (!musicConfigured) {
+    alert("A música ainda precisa ser adicionada ao projeto. Vamos fazer isso na próxima etapa! 💗");
+    return;
+  }
+  if (audio.paused) {
+    audio.play().then(() => {
+      musicButton.textContent = "♫ Pausar música";
+    }).catch(() => {
+      alert("Toque novamente para tentar iniciar a música.");
+    });
+  } else {
+    audio.pause();
+    musicButton.textContent = "♫ Tocar música";
+  }
 }
 </script>
 </body>
