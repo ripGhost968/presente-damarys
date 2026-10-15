@@ -529,6 +529,53 @@ footer p { font-size: 13px; }
   50% { transform: translateY(-7px) rotate(-1deg); }
 }
 
+  
+/* Ursinho interativo */
+.ursinho-section {
+  text-align: center;
+  padding: 35px 20px;
+}
+
+.ursinho {
+  display: inline-block;
+  border: none;
+  background: transparent;
+  font-size: 100px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  animation: ursinhoFlutuar 2s ease-in-out infinite;
+}
+
+.ursinho:hover {
+  transform: scale(1.12);
+}
+
+.ursinho:active {
+  transform: scale(0.92);
+}
+
+@keyframes ursinhoFlutuar {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+.mensagem-ursinho {
+  max-width: 500px;
+  margin: 20px auto 0;
+  padding: 18px;
+  border-radius: 18px;
+  background: #ffe4ef;
+  color: #a83262;
+  font-size: 17px;
+  line-height: 1.6;
+  box-shadow: 0 5px 15px #e8a4c144;
+}
+
+.mensagem-ursinho.hidden {
+  display: none;
+}
+
+
 </style>
 </head>
 <body>
