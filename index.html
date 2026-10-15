@@ -189,9 +189,191 @@ footer p { font-size: 13px; }
 @media(prefers-reduced-motion:reduce) {
   *,*:before,*:after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+#love-lock {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 15% 20%, #fff5fb, transparent 35%),
+    radial-gradient(circle at 85% 80%, #ffc5df, transparent 35%),
+    linear-gradient(135deg, #ffe4ef, #f8b8d5, #fff0f7);
+  font-family: "Trebuchet MS", sans-serif;
+  color: #9b456d;
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.lock-card {
+  width: min(100%, 410px);
+  box-sizing: border-box;
+  padding: 28px 22px;
+  text-align: center;
+  background: rgba(255,255,255,.82);
+  border: 2px solid white;
+  border-radius: 30px;
+  box-shadow: 0 15px 50px #c75d8b40;
+  animation: lockFloat 3s ease-in-out infinite;
+}
+
+.teddy {
+  font-size: 70px;
+  animation: teddyWiggle 2.5s ease-in-out infinite;
+}
+
+.tiny-hearts {
+  color: #e879a8;
+  letter-spacing: 12px;
+  margin: 8px 0;
+}
+
+.lock-card h1 {
+  font-size: 27px;
+  margin: 12px 0;
+}
+
+.lock-card h2 {
+  font-size: 18px;
+  margin: 15px 0 8px;
+}
+
+.lock-card p {
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.lock-icon {
+  font-size: 34px;
+  margin-top: 15px;
+}
+
+.hint {
+  color: #b26b8b;
+}
+
+.password-dots {
+  font-size: 24px;
+  letter-spacing: 5px;
+  margin: 20px 0;
+  color: #db76a3;
+  min-height: 30px;
+  font-weight: bold;
+}
+
+.number-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 11px;
+  max-width: 290px;
+  margin: 0 auto;
+}
+
+.number-pad button {
+  min-height: 55px;
+  border: 1px solid #f3b4d0;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #fff, #ffe1ef);
+  color: #b64e7c;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #e9b0ca;
+  transition: transform .15s, background .15s;
+}
+
+.number-pad button:active {
+  transform: scale(.92);
+  background: #ffc8df;
+}
+
+#lock-message {
+  min-height: 24px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.lock-footer {
+  margin-top: 16px;
+  font-size: 12px;
+  color: #c17b9b;
+}
+
+.lock-error {
+  animation: lockShake .35s;
+}
+
+.lock-success {
+  opacity: 0;
+  transform: scale(1.1);
+  pointer-events: none;
+}
+
+@keyframes lockFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes teddyWiggle {
+  0%, 100% { transform: rotate(0); }
+  30% { transform: rotate(-7deg); }
+  70% { transform: rotate(7deg); }
+}
+
+@keyframes lockShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+@media (max-width: 420px) {
+  .lock-card { padding: 23px 16px; }
+  .lock-card h1 { font-size: 23px; }
+  .number-pad { gap: 8px; }
+  .number-pad button { min-height: 50px; }
+  }
+  
 </style>
 </head>
 <body>
+
+<div id="love-lock">
+  <div class="lock-card">
+    <div class="teddy">🧸🎀</div>
+    <div class="tiny-hearts">♡ ♥ ♡</div>
+    <h1>Oii, minha princesa! 💗</h1>
+    <p>Preparei uma surpresa todinha para você.</p>
+    <p>Mas primeiro, precisamos abrir nosso cantinho do amor...</p>
+
+    <div class="lock-icon">🔐</div>
+    <h2>Qual é a nossa data especial?</h2>
+    <p class="hint">Dica: o dia em que começamos a namorar 💞</p>
+
+    <div id="password-dots" class="password-dots">○ ○ ○ ○ ○ ○ ○ ○</div>
+
+    <div class="number-pad">
+      <button onclick="pressNumber('1')">1</button>
+      <button onclick="pressNumber('2')">2</button>
+      <button onclick="pressNumber('3')">3</button>
+      <button onclick="pressNumber('4')">4</button>
+      <button onclick="pressNumber('5')">5</button>
+      <button onclick="pressNumber('6')">6</button>
+      <button onclick="pressNumber('7')">7</button>
+      <button onclick="pressNumber('8')">8</button>
+      <button onclick="pressNumber('9')">9</button>
+      <button onclick="clearPassword()">⌫</button>
+      <button onclick="pressNumber('0')">0</button>
+      <button onclick="checkPassword()">💗</button>
+    </div>
+
+    <p id="lock-message" role="status">Nosso amor é a chave. ♡</p>
+    <div class="lock-footer">Feito com amor para Damarys ✨</div>
+  </div>
+</div>
+  
 <canvas id="particles" aria-hidden="true"></canvas>
 <div class="glow one"></div><div class="glow two"></div>
 
@@ -427,6 +609,71 @@ function alternarMusica() {
     musicButton.textContent = "♫ Tocar música";
   }
 }
+
+let enteredPassword = "";
+
+function updatePasswordDots() {
+  const dots = Array.from({ length: 8 }, (_, i) =>
+    i < enteredPassword.length ? "♥" : "○"
+  );
+  document.getElementById("password-dots").textContent =
+    dots.join(" ");
+}
+
+function pressNumber(number) {
+  if (enteredPassword.length >= 8) return;
+
+  enteredPassword += number;
+  updatePasswordDots();
+
+  if (enteredPassword.length === 8) {
+    checkPassword();
+  }
+}
+
+function clearPassword() {
+  enteredPassword = "";
+  updatePasswordDots();
+  document.getElementById("lock-message").textContent =
+    "Tudo bem, meu amor. Vamos tentar de novo! 💗";
+}
+
+function checkPassword() {
+  const message = document.getElementById("lock-message");
+  const card = document.querySelector(".lock-card");
+  const lock = document.getElementById("love-lock");
+
+  if (enteredPassword === "05092026") {
+    message.textContent = "Acertou, minha princesa! Eu te amo! 💖";
+    document.querySelector(".teddy").textContent = "🧸💕";
+    lock.style.background =
+      "radial-gradient(circle, #fff8fc, #ffc5e0, #f7a8ce)";
+
+    setTimeout(() => {
+      lock.classList.add("lock-success");
+      setTimeout(() => lock.remove(), 750);
+    }, 1400);
+  } else {
+    message.textContent =
+      "Oown, meu amor! 🥺 Senha incorreta. Tenta mais uma vez! 💗";
+
+    card.classList.remove("lock-error");
+    void card.offsetWidth;
+    card.classList.add("lock-error");
+
+    document.querySelector(".teddy").textContent = "🥺🧸";
+    enteredPassword = "";
+
+    setTimeout(() => {
+      updatePasswordDots();
+      document.querySelector(".teddy").textContent = "🧸🎀";
+      message.textContent = "Dica: lembre-se da nossa data especial! ♡";
+    }, 2200);
+  }
+}
+
+updatePasswordDots();
+    
 </script>
 </body>
 </html>
