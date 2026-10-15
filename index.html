@@ -575,6 +575,142 @@ footer p { font-size: 13px; }
   display: none;
 }
 
+  
+/* SURPRESA FINAL — PRESENTE DA DAMARYS */
+.surpresa-final {
+  text-align: center;
+  padding: 45px 18px;
+  margin: 20px auto;
+  max-width: 760px;
+  color: #8f315b;
+}
+
+.surpresa-final h2 {
+  color: #b83f72;
+  margin-bottom: 14px;
+}
+
+.texto-presente {
+  line-height: 1.8;
+  margin: 0 auto 22px;
+  max-width: 520px;
+}
+
+.botao-presente {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 22px;
+  padding: 20px 28px;
+  background: #fff0f6;
+  color: #a83262;
+  cursor: pointer;
+  box-shadow: 0 8px 22px #d86c9a2b;
+  transition: transform 0.25s ease;
+}
+
+.botao-presente:hover {
+  transform: scale(1.04);
+}
+
+.emoji-presente {
+  display: inline-block;
+  font-size: 88px;
+  line-height: 1.2;
+}
+
+.texto-botao-presente {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.carta-final {
+  max-width: 620px;
+  margin: 28px auto 0;
+  padding: 28px 22px;
+  border: 1px solid #f4c1d5;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #fff9fc, #ffeaf3);
+  box-shadow: 0 10px 30px #c85d8b20;
+  color: #66344b;
+  text-align: left;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.carta-final h3 {
+  color: #b83f72;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.carta-final p {
+  margin-bottom: 16px;
+}
+
+.assinatura-final {
+  text-align: right;
+  color: #b83f72;
+  font-weight: bold;
+  margin-top: 24px;
+}
+
+.carta-final.hidden {
+  display: none;
+}
+
+.carta-final.visivel {
+  animation: aparecerCartaFinal 0.7s ease both;
+}
+
+@keyframes aparecerCartaFinal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.coracoes-presente {
+  font-size: 23px;
+  letter-spacing: 5px;
+  margin-top: 14px;
+}
+
+@media (max-width: 768px) {
+  .surpresa-final {
+    padding: 30px 14px;
+  }
+
+  .emoji-presente {
+    font-size: 74px;
+  }
+
+  .carta-final {
+    padding: 22px 17px;
+    line-height: 1.8;
+  }
+
+  .botao-presente:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carta-final.visivel {
+    animation: none;
+  }
+
+  .botao-presente {
+    transition: none;
+  }
+}
+
 
 </style>
 </head>
