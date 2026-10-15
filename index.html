@@ -1682,6 +1682,45 @@ function abrirPresenteFinal() {
   }
 }
 
+  
+(function iniciarNossoUniverso() {
+  const campo = document.getElementById("campoUniverso");
+  const caixa = document.getElementById("mensagemUniverso");
+  const texto = document.getElementById("textoMensagemUniverso");
+  const progresso = document.getElementById("progressoUniverso");
+
+  if (!campo || !caixa || !texto || !progresso) return;
+
+  const estrelas = Array.from(
+    campo.querySelectorAll(".estrela-amor")
+  );
+
+  const descobertas = new Set();
+
+  estrelas.forEach((estrela, indice) => {
+    estrela.addEventListener("click", () => {
+      const mensagem = estrela.dataset.mensagem;
+
+      if (!mensagem) return;
+
+      texto.textContent = mensagem;
+      caixa.classList.remove("hidden");
+
+      estrela.classList.add("descoberta");
+      estrela.setAttribute("aria-pressed", "true");
+      descobertas.add(indice);
+
+      progresso.textContent =
+        "✨ " + descobertas.size + " de " +
+        estrelas.length + " estrelas descobertas";
+
+      if (typeof chuvaDeAmor === "function") {
+        chuvaDeAmor(5);
+      }
+    });
+  });
+})();
+
 </script>
 </body>
 </html>
