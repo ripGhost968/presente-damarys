@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para você, meu amor ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      color: #713d53;
+      background: linear-gradient(160deg, #fff5f8, #ffe0eb, #fff8fb);
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    .inicio {
+      min-height: 100vh;
+      padding: 35px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .coracao {
+      font-size: 65px;
+      animation: pulsar 1.5s infinite;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin: 18px 0 10px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .botao {
+      background: #d86c98;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 15px 24px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px #d86c9840;
+    }
+
+    .secao {
+      padding: 45px 23px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .cartinha {
+      background: #ffffffb8;
+      border: 1px solid #f5c3d5;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 8px 25px #b85b7b12;
+    }
+
+    .escondido {
+      display: none;
+    }
+
+    .flor {
+      font-size: 25px;
+      letter-spacing: 7px;
+    }
+
+    footer {
+      padding: 35px 15px;
+      font-size: 14px;
+    }
+
+    @keyframes pulsar {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.13); }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="inicio">
+    <div class="coracao">💗</div>
+    <p>Um presentinho feito com muito amor...</p>
+    <h1>Para você, Damarys</h1>
+    <p>Porque você merece algo tão especial quanto o sorriso que coloca no meu rosto.</p>
+    <button class="botao" onclick="abrirPresente()">
+      Abrir meu presente 💌
+    </button>
+    <p class="flor">🌷 ✨ 🌸</p>
+  </section>
+
+  <section id="presente" class="secao escondido">
+    <h1>Feliz aniversário, meu amor! 🎂</h1>
+
+    <div class="cartinha">
+      <p>Minha princesa, ❤️</p>
+
+      <p>
+        Hoje é um dia especial porque é o dia em que nasceu
+        uma pessoa que se tornou muito importante para mim.
+        Eu queria conseguir colocar em palavras tudo o que
+        sinto por você, mas parece que nenhuma palavra é
+        suficiente para explicar o tamanho do meu carinho.
+      </p>
+
+      <p>
+        Sou muito feliz por ter você na minha vida. Amo seu
+        jeitinho, seu carinho e esses pequenos detalhes que
+        fazem você ser única para mim.
+      </p>
+
+      <p>
+        Quero estar ao seu lado nos dias felizes e também
+        naqueles em que as coisas não forem tão fáceis.
+        Quero continuar aprendendo sobre você, criando
+        lembranças e construindo nossa história com amor,
+        respeito e cuidado.
+      </p>
+
+      <p>
+        Que Deus abençoe sua vida, cuide do seu coração e
+        ilumine cada passo seu. Que nunca faltem motivos
+        para sorrir e pessoas que te lembrem o quanto você
+        é especial.
+      </p>
+
+      <p>
+        Feliz aniversário, meu amor. Obrigado por ser você.
+        Que esse seja apenas mais um de muitos momentos
+        bonitos que ainda vamos viver juntos.
+      </p>
+
+      <p>Eu te amo, minha princesa! 💗🥹</p>
+    </div>
+
+    <div class="secao">
+      <h1>Uma coisinha que amo em você 🌷</h1>
+      <div class="cartinha">
+        <p>
+          Seu jeitinho, sua maneira de demonstrar carinho
+          e a forma como você consegue deixar meus dias
+          mais especiais, mesmo sem perceber.
+        </p>
+        <p>Você é única para mim. ❤️</p>
+      </div>
+    </div>
+
+    <p class="flor">🌸 💗 🌷 💗 🌸</p>
+    <p>Feito com amor, especialmente para você.</p>
+  </section>
+
+  <footer>Um pedacinho do meu coração é seu. ❤️</footer>
+
+  <script>
+    function abrirPresente() {
+      document.getElementById("presente").classList.remove("escondido");
+      document.getElementById("presente").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  </script>
+
+</body>
+</html>
