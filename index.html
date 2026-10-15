@@ -1067,6 +1067,40 @@ function abrirCarta() {
   }
 }
 
+  
+const mensagensDoUrsinho = [
+  "Você merece todo o amor mais bonito desse mundo. 💗",
+  "Se eu pudesse, te daria um abraço bem apertado agora! 🫂",
+  "Você é uma das partes mais especiais da minha vida. 🥹❤️",
+  "Não se esqueça nunca do quanto você é amada, minha princesa. 💕",
+  "Esse ursinho está aqui para te lembrar que você tem alguém que te ama muito! 🧸",
+  "Queria poder aparecer aí agora só para ficar pertinho de você. 💖"
+];
+
+let ultimaMensagemUrsinho = -1;
+
+function mensagemUrsinho() {
+  const caixa = document.getElementById("mensagemUrsinho");
+
+  let indice;
+
+  do {
+    indice = Math.floor(Math.random() * mensagensDoUrsinho.length);
+  } while (
+    mensagensDoUrsinho.length > 1 &&
+    indice === ultimaMensagemUrsinho
+  );
+
+  ultimaMensagemUrsinho = indice;
+  caixa.textContent = mensagensDoUrsinho[indice];
+  caixa.classList.remove("hidden");
+
+  if (typeof chuvaDeAmor === "function") {
+    chuvaDeAmor(12);
+  }
+}
+
+
 </script>
 </body>
 </html>
