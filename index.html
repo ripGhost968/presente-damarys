@@ -963,7 +963,35 @@ function checkPassword() {
 }
 
 updatePasswordDots();
-    
+
+  
+function abrirCarta() {
+  const botao = document.getElementById("envelopeBotao");
+  const carta = document.getElementById("cartaCompleta");
+  const dica = document.getElementById("dicaEnvelope");
+
+  const aberta = botao.classList.toggle("open");
+
+  botao.setAttribute("aria-expanded", aberta ? "true" : "false");
+
+  if (aberta) {
+    carta.classList.remove("hidden");
+    carta.classList.add("reveal");
+    dica.textContent = "Uma cartinha feita com amor, só para você 💗";
+    chuvaDeAmor(22);
+
+    setTimeout(() => {
+      carta.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }, 500);
+  } else {
+    carta.classList.add("hidden");
+    dica.textContent = "Toque no envelope para abrir sua cartinha 🧸";
+  }
+}
+
 </script>
 </body>
 </html>
