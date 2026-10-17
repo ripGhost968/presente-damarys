@@ -1421,12 +1421,17 @@ footer p { font-size: 13px; }
 <audio id="musica" loop preload="none"></audio>
 
   <div class="youtube-player">
-  <iframe
-    src="https://www.youtube.com/embed/GiXHRwNTu_I"
-    title="Trevo (Tu) - ANAVITÓRIA e Tiago Iorc"
-    allow="autoplay; encrypted-media; picture-in-picture"
-    allowfullscreen>
-  </iframe>
+  
+<iframe
+  id="youtubePlayer"
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/GiXHRwNTu_I"
+  title="Trevo (Tu) - ANAVITÓRIA e Tiago Iorc"
+  allow="autoplay; encrypted-media; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
   </div>
 
 <script>
@@ -1515,22 +1520,18 @@ function chuvaDeAmor(qtd) {
 const audio = document.getElementById("musica");
 const musicButton = document.getElementById("musicButton");
 let musicConfigured = false;
+
 function alternarMusica() {
-  if (!musicConfigured) {
-    alert("A música ainda precisa ser adicionada ao projeto. Vamos fazer isso na próxima etapa! 💗");
-    return;
-  }
-  if (audio.paused) {
-    audio.play().then(() => {
-      musicButton.textContent = "♫ Pausar música";
-    }).catch(() => {
-      alert("Toque novamente para tentar iniciar a música.");
+  const player = document.getElementById("youtubePlayer");
+
+  if (player) {
+    player.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
     });
-  } else {
-    audio.pause();
-    musicButton.textContent = "♫ Tocar música";
   }
 }
+
 
 let enteredPassword = "";
 
