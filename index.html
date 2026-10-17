@@ -1508,20 +1508,56 @@ function chuvaDeAmor(qtd) {
     setTimeout(() => el.remove(), 5000);
   }
 }
-const audio = document.getElementById("musica");
+
 const musicButton = document.getElementById("musicButton");
-let musicConfigured = false;
+
+let playerYoutube = null;
+let musicPlaying = false;
+let playerReady = false;
+
+function onYouTubeIframeAPIReady() {
+  playerYoutube = new YT.Player("youtubePlayer", {
+    width: "200",
+    height: "200",
+    videoId: "GiXHRwNTu_I",
+    playerVars: {
+      autoplay: 0,
+      controls: 0,
+      playsinline: 1
+    },
+    events: {
+      onReady: function () {
+        playerReady = true;
+      },
+      onStateChange: function (event) {
+        if (event.data === YT.PlayerState.PLAYING) {
+          musicPlaying = true;
+          musicButton.textContent = "♫ Pausar música";
+        } else if (
+          event.data === YT.PlayerState.PAUSED ||
+          event.data === YT.PlayerState.ENDED
+        ) {
+          musicPlaying = false;
+          musicButton.textContent = "♫ Tocar música";
+        }
+      }
+    }
+  });
+}
 
 function alternarMusica() {
-  const player = document.getElementById("youtubePlayer");
+  if (!playerReady || !playerYoutube) {
+    musicButton.textContent = "♫ Aguarde...";
+    return;
+  }
 
-  if (player) {
-    player.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
+  if (musicPlaying) {
+    playerYoutube.pauseVideo();
+  } else {
+    playerYoutube.playVideo();
   }
 }
+
 
 
 let enteredPassword = "";
